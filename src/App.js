@@ -1,26 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Dashboard from "./views/Dashboard";
-import Login from "./views/Login";
-import Error from "./views/Error";
-import { AuthContext } from "./context/AuthContext";
+import { Provider } from "react-redux";
 
-const App = () => (
-    <AuthContext>
-        <Router>
-            <Switch>
-                <Route exact path="/login">
-                    <Login />
-                </Route>
-                <Route exact path="/">
-                    <Dashboard />
-                </Route>
-                <Route path="*">
-                    <Error />
-                </Route>
-            </Switch>
-        </Router>
-    </AuthContext>
-);
+import { AppRouter } from "./routers/AppRouter";
+import { store } from "./store/store";
+
+const App = () => {
+  return (
+    <div>
+      <Provider store={store}>
+        <AppRouter />
+      </Provider>
+    </div>
+  );
+};
 
 export default App;
+
