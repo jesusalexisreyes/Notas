@@ -15,7 +15,7 @@ import { useForm } from "../hooks/useForm";
 import { validateEmail } from "../hooks/validation";
 import Cargando from "../components/Cargando";
 
-const Login = ({ history }) => {
+export const Login = ({ history }) => {
   const { Content, Footer } = Layout;
   const [signup, setsignup] = useState(false);
 
@@ -23,8 +23,8 @@ const Login = ({ history }) => {
   const [loading, setLoading] = useState(false);
 
   const [formValues, handleInputChange] = useForm({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const { email, password } = formValues;
@@ -41,7 +41,7 @@ const Login = ({ history }) => {
     } else {
       const res = await startLoginEmailPassword(email, password);
       if (res.status) {
-        dispatch(login(res.uid));
+        dispatch(login(res.uid, res.name));
         setLoading(false);
       } else {
         Swal.fire("Error", res.messagge, "error");
