@@ -76,7 +76,7 @@ export const Dashboard = ({ history }) => {
                         note.body
                       }
                     </Card.Text>
-                    <Button variant="outline-primary" href="#">Editar</Button>
+                    <Button variant="outline-primary" href="#">Editar nota</Button>
                     <Button variant="outline-danger" href="#">Eliminar</Button>
                   </Card.Body>
                 </Card>
