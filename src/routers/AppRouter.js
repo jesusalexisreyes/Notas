@@ -8,6 +8,7 @@ import { firebase } from "../firebase/firebaseConfig";
 import { AuthRouter } from "./AuthRouter";
 import Dashboard from "../views/Dashboard";
 import { login } from "../actions/auth";
+import { startLoadingNotes } from "../actions/notes";
 import { PublicRoute } from "./PublicRouter";
 import Cargando from "../components/Cargando";
 import Error from "../views/Error";
@@ -24,6 +25,7 @@ export const AppRouter = () => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));
         setIsLoggedIn(true);
+        dispatch(startLoadingNotes(user.uid));
       } else {
         setIsLoggedIn(false);
       }
