@@ -15,7 +15,7 @@ export const Dashboard = ({ history }) => {
   const { Content, Footer } = Layout;
   const { name } = useSelector(state => state.auth);
 
-  const handleClose = () => setShow(false);   
+  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
 
@@ -37,8 +37,8 @@ export const Dashboard = ({ history }) => {
   return (
     <Layout style={{ height: "100vh" }}>
 
-      <Content style={{ padding: "0 50px", marginTop: 40 }}>
-        <Button variant="outline-primary" onClick={handleShow}>Primary</Button>{' '}
+      <Content style={{ padding: "0 50px", marginTop: 40  }}>
+        <Button   variant="outline-primary" onClick={handleShow}>Crear nota</Button>{' '}
 
 
         <div
@@ -49,13 +49,14 @@ export const Dashboard = ({ history }) => {
           }}
         >
           Hola {name} :)
+          <br/>
 
           {
 
             notes.map(note => (
 
 
-              
+
 
 
 
@@ -68,7 +69,7 @@ export const Dashboard = ({ history }) => {
 
 
               <CardDeck className="grid">
-                <Card style={{ width: '18rem' }} className="box">
+                <Card style={{ width: '18rem', background: '#F2E2CF' } } className="box">
                   <Card.Body>
                     <Card.Title>{note.title}</Card.Title>
                     <Card.Text>
@@ -76,7 +77,7 @@ export const Dashboard = ({ history }) => {
                         note.body
                       }
                     </Card.Text>
-                    <Button variant="outline-primary" href="#">Editar nota</Button>
+                    <Button variant="outline-primary" style={{ marginRight: '10px' }} href="#">Editar nota</Button>
                     <Button variant="outline-danger" href="#">Eliminar</Button>
                   </Card.Body>
                 </Card>
@@ -92,10 +93,9 @@ export const Dashboard = ({ history }) => {
 
 
 
-
             ))
           }
-
+          <br/>
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}></Footer>
@@ -109,7 +109,7 @@ export const Dashboard = ({ history }) => {
 
             <Form.Item>
               <Input
-               
+
                 name="title"
                 value={title}
 
@@ -119,8 +119,8 @@ export const Dashboard = ({ history }) => {
             </Form.Item>
             <Form.Item>
               <Input
-               
-                
+
+
                 name="body"
                 value={body}
 
