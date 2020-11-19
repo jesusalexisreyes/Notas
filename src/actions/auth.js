@@ -10,8 +10,7 @@ export const startLoginEmailPassword = async (email, password) => {
     return {
       status: true,
       uid: response.user.uid,
-      name: response.user.displayName
-
+      name: response.user.displayName,
     };
   } catch (err) {
     return {
@@ -27,7 +26,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(async ({ user }) => {
-        await user.updateProfile({ displayName: name })
+        await user.updateProfile({ displayName: name });
         dispatch(login(user.uid, user.displayName));
       })
       .catch((e) => {
@@ -49,16 +48,14 @@ export const startGoogleLogin = () => {
 };
 
 export const login = (uid, displayName) => {
-
   return {
     type: types.login,
     payload: {
       uid,
-      displayName
-    }
-
-  }
-}
+      displayName,
+    },
+  };
+};
 
 export const startLogout = () => {
   return async (dispatch) => {
