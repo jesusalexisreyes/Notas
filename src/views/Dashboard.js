@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Layout, Input, Form,Icon } from "antd";
+import { Layout, Input, Form } from "antd";
 import { withRouter } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { startNewNotes } from "../actions/notes";
 import { useForm } from "../hooks/useForm";
 import { Modal, Button, Card, CardDeck } from 'react-bootstrap'
-
+import moment from 'moment';
 
 
 export const Dashboard = ({ history }) => {
@@ -72,6 +72,10 @@ export const Dashboard = ({ history }) => {
                 <Card style={{ width: '18rem', background: '#F2E2CF' } } className="box">
                   <Card.Body>
                     <Card.Title>{note.title}</Card.Title>
+                    <Card.Subtitle>
+                    <span>{moment(note.date).format('dddd')},</span>
+                      <span> {moment(note.date).format('MMMM')} {moment(note.date).format('D')}</span>
+                    </Card.Subtitle>
                     <Card.Text>
                       {
                         note.body
